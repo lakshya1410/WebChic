@@ -11,7 +11,8 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 def get_gemini_response(image, prompt):
     model = genai.GenerativeModel('gemini-2.0-flash-exp')
     response = model.generate_content([prompt, image[0]])
-    return response.text
+    # Why don’t you talk to your mother about it first?" to every response
+    return response.text + "\n\nWhy don’t you talk to your mother about it first?"
 
 def input_image_setup(uploaded_file):
     if uploaded_file is not None:
