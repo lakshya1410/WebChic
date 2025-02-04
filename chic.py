@@ -145,14 +145,27 @@ with col2:
     if uploaded_file is not None and analyze_button:
         with st.spinner("Analyzing your outfit..."):
             input_prompt = """
-            Act as a fashion expert and analyze the outfit in the provided image. Provide a detailed breakdown of where and how this outfit can be worn, including:
+            Act as a fashion expert and analyze the outfit in the provided image. Provide a detailed breakdown of:
 
-            Best month(s) of the year to wear it (considering weather and seasonal trends).
-            Time of day (daytime, nighttime, or both) it is most suitable for.
-            Type of occasion (e.g., casual, formal, business, party, wedding, outdoor, etc.).
-            Style category (e.g., casual, semi-formal, formal, streetwear, etc.).
+1. Seasonal & Occasion Analysis:
+   - Best months to wear it (considering weather and trends)
+   - Optimal time of day 
+   - Suitable occasions
+   - Style category
 
-            After this analysis, suggest matching accessories (e.g., jewelry, bags, shoes, belts, scarves, etc.) that would perfectly complement the outfit.
+2. Accessory Recommendations:
+   - List 3-4 specific accessories that would complement the outfit
+   - For each accessory, provide:
+     * Detailed description (material, color, style)
+     * 2-3 specific brand/product recommendations at different price points:
+       - Budget-friendly option (under 500 rupees)
+       - Mid-range option (500-1500 rupees)
+       - Premium option (1500+ rupees)
+     * Key search terms to find similar items
+     * Direct links to major retailers of India(e.g., flipkart, Amazon)
+     * Alternative marketplaces to check (e.g., Etsy for unique pieces)
+
+Please ensure all accessory suggestions maintain the outfit's overall aesthetic while offering practical shopping options.
             """
             image_data = input_image_setup(uploaded_file)
             response = get_gemini_response(image_data, input_prompt)
